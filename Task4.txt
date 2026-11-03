@@ -1,0 +1,336 @@
+1. ArrayList and Dynamic Arrays
+
+Definition:-
+
+An ArrayList is a collection class in Java that is used to store multiple elements in a single variable.
+
+It is part of the Java Collections Framework and belongs to the java.util package.
+
+Unlike a normal array, an ArrayList can dynamically increase or decrease its size when elements are added or removed.
+
+
+Features of ArrayList:-
+
+1. Stores multiple elements.
+2. Automatically adjusts its size.
+3. Allows duplicate elements.
+4. Maintains insertion order.
+5. Provides methods to add, remove, and search elements.
+6. Supports index-based access.
+
+Syntax:-
+
+import java.util.ArrayList;
+
+ArrayList<String> names = new ArrayList<>();
+
+
+Example
+import java.util.ArrayList;
+
+class Demo {
+    public static void main(String[] args) {
+
+        ArrayList<String> names = new ArrayList<>();
+
+        names.add("Rahul");
+        names.add("Prakash");
+        names.add("Amit");
+
+        System.out.println(names);
+    }
+}
+
+
+Output:
+[Rahul, Prakash, Amit]
+
+
+Important  ArrayList Methods
+Method 	Description
+add()	Adds an element
+get()	Retrieves an element
+set()	Updates an element
+remove()	Removes an element
+size()	Returns the number of elements
+contains()	Checks whether an element exists
+clear()	Removes all elements
+isEmpty()	Checks whether the list is empty
+
+Array vs ArrayList
+Array	ArrayList
+Fixed size	Dynamic size
+Can store primitives and objects	Stores objects (primitive values use wrapper classes)
+Uses length	Uses size()
+Less built-in functionality	Provides many built-in methods
+Can be multidimensional	Can contain nested ArrayLists
+
+Advantages:
+- Dynamic memory sizing.
+- Easy insertion and deletion.
+- Built-in searching methods.
+- Useful for managing collections of data.
+
+2. HashMap for Key-Value Pairs
+Definition
+HashMap is a collection class in Java that stores data in the form of key-value pairs.
+
+Each key is unique, but values can be duplicated.
+
+HashMap belongs to the java.util package.
+Features of HashMap
+1. Stores data as key-value pairs.
+2. Keys must be unique.
+3. Values can be duplicated.
+4. Allows one null key and multiple null values.
+5. Does not guarantee insertion order.
+6. Provides fast average-case searching and retrieval.
+Syntax
+import java.util.HashMap;
+
+HashMap<Integer, String> students = new HashMap<>();
+
+
+Here:
+- Integer represents the key type.
+- String represents the value type.
+Example
+import java.util.HashMap;
+
+class Demo {
+    public static void main(String[] args) {
+
+        HashMap<Integer, String> students = new HashMap<>();
+
+        students.put(101, "Rahul");
+        students.put(102, "Amit");
+        students.put(103, "Prakash");
+
+        System.out.println(students);
+    }
+}
+
+
+Output: (Order may vary.)
+{101=Rahul, 102=Amit, 103=Prakash}
+
+
+Important HashMap Methods
+Method	Description
+put()	Adds or updates a key-value pair
+get()	Retrieves a value using a key
+remove()	Removes an entry
+containsKey()	Checks whether a key exists
+containsValue()	Checks whether a value exists
+keySet()	Returns all keys
+values()	Returns all values
+size()	Returns the number of entries
+clear()	Removes all entries
+
+ArrayList vs HashMap
+ArrayList	HashMap
+Stores individual elements	Stores key-value pairs
+Accessed using index	Accessed using key
+Allows duplicate elements	Keys are unique
+Maintains insertion order	Does not guarantee order
+Uses add()	Uses put()
+
+Real-life applications:
+- Student database.
+- Employee records.
+- Product information.
+- Username and password lookup.
+- Contact management using phone numbers as keys.
+
+3. Reading From and Writing to Files
+Definition
+File handling in Java is the process of creating, reading, writing, updating, and deleting files using Java programs.
+
+It allows data to be stored permanently instead of keeping it only in program memory.
+
+Java provides classes in the java.io package for file handling.
+Types of File Operations
+1. Creating a file.
+2. Writing data into a file.
+3. Reading data from a file.
+4. Appending data to a file.
+5. Deleting a file.
+Important File Handling Classes
+Class	Description
+File	Creates and manages file information
+FileWriter	Writes character data
+FileReader	Reads character data
+BufferedWriter	Writes data efficiently using buffering
+BufferedReader	Reads text efficiently
+PrintWriter	Writes formatted text
+Scanner	Reads data from different input sources
+
+A. Writing Data into a File
+Example:
+import java.io.FileWriter;
+import java.io.IOException;
+
+class Demo {
+    public static void main(String[] args) {
+
+        try {
+            FileWriter fw = new FileWriter("data.txt");
+
+            fw.write("Welcome to Java");
+            fw.close();
+
+            System.out.println("Data Written Successfully");
+        }
+        catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+Output:
+Data Written Successfully
+
+
+The file data.txt contains:
+Welcome to Java
+
+
+B. Reading Data from a File
+Example:
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+
+class Demo {
+    public static void main(String[] args) {
+
+        try {
+            BufferedReader br = new BufferedReader(
+                new FileReader("data.txt"));
+
+            String line;
+
+            while((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            br.close();
+        }
+        catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+
+
+Output:
+Welcome to Java
+
+
+C. Appending Data to a File
+Appending means adding new data at the end of an existing file without deleting its previous content.
+FileWriter fw = new FileWriter("data.txt", true);
+
+fw.write("\nLearning File Handling");
+
+fw.close();
+
+
+The second argument true enables append mode.
+Advantages of File Handling
+1. Stores information permanently.
+2. Allows large amounts of data to be stored.
+3. Makes data reusable.
+4. Supports data sharing between programs.
+5. Useful for maintaining records and reports.
+
+4. Exception Handling with try-catch-finally
+Definition
+Exception handling is a mechanism in Java used to handle runtime errors and maintain the normal flow of program execution.
+
+An exception is an unexpected event that occurs during program execution.
+Types of Exceptions
+1. Checked Exceptions
+
+Checked by the compiler during compilation.
+
+Examples:
+- IOException
+- FileNotFoundException
+- SQLException
+2. Unchecked Exceptions
+
+Occur at runtime and are generally not checked by the compiler.
+
+Examples:
+- ArithmeticException
+- NullPointerException
+- ArrayIndexOutOfBoundsException
+- NumberFormatException
+Try Block
+The try block contains code that may generate an exception.
+Catch Block
+The catch block handles the exception generated inside the try block.
+Finally Block
+The finally block generally executes whether an exception occurs or not. It is commonly used for cleanup operations.
+Syntax
+try {
+    // Risky code
+}
+catch(Exception e) {
+    // Exception handling
+}
+finally {
+    // Cleanup code
+}
+
+
+Example
+class Demo {
+    public static void main(String[] args) {
+
+        try {
+            int a = 10;
+            int b = 0;
+
+            int result = a / b;
+
+            System.out.println(result);
+        }
+        catch(ArithmeticException e) {
+            System.out.println("Cannot Divide By Zero");
+        }
+        finally {
+            System.out.println("Program Completed");
+        }
+    }
+}
+
+
+Output:
+Cannot Divide By Zero
+Program Completed
+
+
+Important Exception Handling Keywords
+Keyword	Description
+try	Contains risky code
+catch	Handles exceptions
+finally	Performs cleanup
+throw	Explicitly throws an exception
+throws	Declares exceptions a method may pass to its caller
+
+Advantages:
+- Helps prevent unexpected termination when errors are handled.
+- Improves program reliability.
+- Separates normal code from error-handling code.
+- Makes debugging easier.
+
+5. Working with Dates and Times
+Definition
+Java provides date and time classes to manage dates, times, and date-related calculations.
+
+The modern Java Date and Time API is available in the java.time package.
+
+It was introduced in Java 8.
